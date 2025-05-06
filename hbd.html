@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love 🎂❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #ff4d4d;
+            font-size: 3.5rem;
+            animation: glow 2s infinite alternate;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.5rem;
+            animation: fadeIn 3s ease-in-out;
+            margin: 10px 0;
+        }
+        .quotes {
+            margin: 20px auto;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #ff4d4d;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+            max-width: 80%;
+        }
+        .main-content {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .slideshow-container {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            perspective: 1000px;
+        }
+        .slides {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: fadeSlide 1s ease-in-out;
+            transform-style: preserve-3d;
+        }
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s;
+            border: 3px solid white;
+        }
+        .slides img:hover {
+            transform: scale(1.03) rotateY(5deg);
+        }
+        .message-container {
+            flex: 1;
+            padding: 0 30px;
+            max-width: 400px;
+            position: relative;
+        }
+        .message {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: floatUp 3s ease-in-out;
+            border: 2px solid #ffb6c1;
+        }
+        .signature {
+            font-style: italic;
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .control-btn {
+            background: linear-gradient(to right, #ff4d4d, #ff9999);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .confetti-btn {
+            background: linear-gradient(to right, #ff8a00, #ffca00);
+        }
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .floating-item {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: float 8s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+            }
+            to {
+                text-shadow: 0 0 20px #ff9999, 0 0 30px #ff9999, 0 0 40px #ff9999;
+            }
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) translateX(50px);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .slideshow-container {
+                width: 250px;
+                height: 350px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday, My Love! 🎂❤️</h1>
+    <p>You make my world brighter every single day.</p>
+
+    <!-- Quotes Section -->
+    <div class="quotes" id="quotes"></div>
+
+    <!-- Music and Confetti Controls -->
+    <div class="controls">
+        <button class="control-btn" id="playBtn">🎵 Play Music</button>
+        <button class="control-btn" id="pauseBtn">⏸️ Pause Music</button>
+        <button class="control-btn confetti-btn" id="confettiBtn">🎉 Surprise!</button>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Left Slideshow -->
+        <div class="slideshow-container" id="leftSlideshow">
+            <div class="slides">
+                <img src="1.jpg" alt="Our Memory 1">
+            </div>
+            <div class="slides">
+                <img src="2.jpg" alt="Our Memory 2">
+            </div>
+            <div class="slides">
+                <img src="5.jpg" alt="Our Memory 3">
+            </div>
+            <div class="slides">
+                <img src="6.jpg" alt="Our Memory 4">
+            </div>
+            <div class="slides">
+                <img src="9.jpg" alt="Our Memory 1">
+            </div>
+            <div class="slides">
+                <img src="10.jpg" alt="Our Memory 2">
+            </div>
+            <div class="slides">
+                <img src="13.jpg" alt="Our Memory 3">
+            </div>
+            <div class="slides">
+                <img src="14.jpg" alt="Our Memory 4">
+            </div>
+            <div class="slides">
+                <img src="17.jpg" alt="Our Memory 1">
+            </div>
+            <div class="slides">
+                <img src="18.jpg" alt="Our Memory 2">
+            </div>
+            <div class="slides">
+                <img src="21.jpg" alt="Our Memory 3">
+            </div>
+            <div class="slides">
+                <img src="22.jpg" alt="Our Memory 4">
+            </div>
+            <div class="slides">
+                <img src="25.jpg" alt="Our Memory 1">
+            </div>
+            <div class="slides">
+                <img src="26.jpg" alt="Our Memory 2">
+            </div>
+            <div class="slides">
+                <img src="29.jpg" alt="Our Memory 3">
+            </div>
+            <div class="slides">
+                <img src="30.jpg" alt="Our Memory 4">
+            </div>
+        </div>
+
+        <!-- Center Message -->
+        <div class="message-container">
+            <div class="message">
+                <p>To the most amazing girlfriend in the world,</p>
+                <p>Every moment with you is special. On your birthday, I want you to know how much you mean to me.</p>
+                <p>You're not just my love, you're my best friend, my happiness, and my everything.</p>
+                <p class="signature">Forever yours,<br>Joshu..</p>
+            </div>
+        </div>
+
+        <!-- Right Slideshow -->
+        <div class="slideshow-container" id="rightSlideshow">
+            <div class="slides">
+                <img src="3.jpg" alt="Our Memory 5">
+            </div>
+            <div class="slides">
+                <img src="4.jpg" alt="Our Memory 6">
+            </div>
+            <div class="slides">
+                <img src="7.jpg" alt="Our Memory 7">
+            </div>
+            <div class="slides">
+                <img src="8.jpg" alt="Our Memory 8">
+            </div>
+            <div class="slides">
+                <img src="11.jpg" alt="Our Memory 6">
+            </div>
+            <div class="slides">
+                <img src="12.jpg" alt="Our Memory 7">
+            </div>
+            <div class="slides">
+                <img src="15.jpg" alt="Our Memory 8">
+            </div>
+            <div class="slides">
+                <img src="16.jpg" alt="Our Memory 6">
+            </div>
+            <div class="slides">
+                <img src="19.jpg" alt="Our Memory 7">
+            </div>
+            <div class="slides">
+                <img src="20.jpg" alt="Our Memory 8">
+            </div>
+            <div class="slides">
+                <img src="23.jpg" alt="Our Memory 6">
+            </div>
+            <div class="slides">
+                <img src="24.jpg" alt="Our Memory 7">
+            </div>
+            <div class="slides">
+                <img src="27.jpg" alt="Our Memory 8">
+            </div>
+            <div class="slides">
+                <img src="28.jpg" alt="Our Memory 6">
+            </div>
+            <div class="slides">
+                <img src="31.jpg" alt="Our Memory 7">
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <script>
+        // Create floating hearts
+        const floatingHearts = document.getElementById("floatingHearts");
+        const heartEmojis = ["❤️", "💖", "💗", "💘", "💓", "💞", "💕", "🧡", "💛", "💚", "💙", "💜"];
+        
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement("div");
+            heart.className = "floating-item";
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+            heart.style.animationDelay = Math.random() * 5 + "s";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            floatingHearts.appendChild(heart);
+        }
+
+        // Slideshow functionality
+        function startSlideshow(containerId, delay) {
+            const container = document.getElementById(containerId);
+            const slides = container.querySelectorAll(".slides");
+            let currentSlide = 0;
+            
+            function showNextSlide() {
+                slides.forEach(slide => slide.style.display = "none");
+                slides[currentSlide].style.display = "block";
+                currentSlide = (currentSlide + 1) % slides.length;
+                setTimeout(showNextSlide, delay);
+            }
+            
+            showNextSlide();
+        }
+
+        // Start slideshows with different timings
+        startSlideshow("leftSlideshow", 3000);
+        startSlideshow("rightSlideshow", 3500);
+
+        // Quotes rotation
+        const quotes = [
+            "You are my sunshine on a cloudy day.",
+            "Every moment with you is a treasure.",
+            "I love you more than words can say.",
+            "You make my heart smile every day.",
+            "Happy Birthday to the love of my life!",
+            "Forever grateful for you. ❤️",
+            "You're the best thing that ever happened to me.",
+            "My heart belongs to you, today and always."
+        ];
+        const quotesElement = document.getElementById("quotes");
+        let quoteIndex = 0;
+
+        function rotateQuotes() {
+            quotesElement.textContent = quotes[quoteIndex];
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            setTimeout(rotateQuotes, 4000);
+        }
+        rotateQuotes();
+
+        // Music controls
+        const bgMusic = document.getElementById("bgMusic");
+        const playBtn = document.getElementById("playBtn");
+        const pauseBtn = document.getElementById("pauseBtn");
+
+        playBtn.addEventListener("click", () => {
+            bgMusic.play();
+            playBtn.style.display = "none";
+            pauseBtn.style.display = "flex";
+        });
+
+        pauseBtn.addEventListener("click", () => {
+            bgMusic.pause();
+            pauseBtn.style.display = "none";
+            playBtn.style.display = "flex";
+        });
+
+        // Initially hide pause button
+        pauseBtn.style.display = "none";
+
+        // Confetti button functionality
+        const confettiBtn = document.getElementById("confettiBtn");
+        confettiBtn.addEventListener("click", createConfettiExplosion);
+
+        // Confetti effect on click anywhere
+        document.addEventListener("click", (e) => {
+            if (e.target.tagName !== "BUTTON") {
+                createConfetti(e.clientX, e.clientY);
+            }
+        });
+
+        function createConfettiExplosion() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createConfetti(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 300);
+            }
+        }
+
+        function createConfetti(x, y) {
+            const confetti = document.createElement("div");
+            confetti.style.position = "fixed";
+            confetti.style.left = "0";
+            confetti.style.top = "0";
+            confetti.style.width = "100%";
+            confetti.style.height = "100%";
+            confetti.style.pointerEvents = "none";
+            confetti.style.zIndex = "1000";
+            
+            const emojis = ["❤️", "🎂", "✨", "🎉", "💖", "🥳", "🌸", "💝"];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement("div");
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.position = "absolute";
+                particle.style.fontSize = Math.random() * 20 + 10 + "px";
+                particle.style.left = x + "px";
+                particle.style.top = y + "px";
+                particle.style.transform = `translate(${Math.random() * 400 - 200}px, ${Math.random() * 400 - 200}px) rotate(${Math.random() * 360}deg)`;
+                particle.style.animation = `fall ${Math.random() * 2 + 1}s ease-out forwards`;
+                confetti.appendChild(particle);
+            }
+            
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 2000);
+        }
+
+        // Fall animation for confetti
+        const style = document.createElement("style");
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
