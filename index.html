@@ -2,56 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love 🎂❤️</title>
     <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            touch-action: manipulation;
         }
         h1 {
-            margin-top: 20px;
+            margin: 10px 0;
             color: #ff4d4d;
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             animation: glow 2s infinite alternate;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1.3;
         }
         p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             animation: fadeIn 3s ease-in-out;
-            margin: 10px 0;
+            margin: 8px 0;
         }
         .quotes {
-            margin: 20px auto;
-            font-size: 1.8rem;
+            margin: 15px auto;
+            font-size: 1.4rem;
             font-style: italic;
             color: #ff4d4d;
             animation: fadeIn 3s ease-in-out infinite alternate;
-            max-width: 80%;
+            max-width: 90%;
+            line-height: 1.4;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .main-content {
             display: flex;
+            flex-direction: column;
             width: 100%;
-            max-width: 1200px;
-            justify-content: space-between;
+            max-width: 500px;
             align-items: center;
-            margin: 20px 0;
+            margin: 15px 0;
+            gap: 20px;
         }
         .slideshow-container {
-            width: 300px;
-            height: 400px;
+            width: 100%;
+            max-width: 280px;
+            height: 350px;
             position: relative;
             perspective: 1000px;
+            margin: 0 auto;
         }
         .slides {
             display: none;
@@ -65,60 +79,66 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.5s;
-            border: 3px solid white;
+            border: 2px solid white;
         }
         .slides img:hover {
             transform: scale(1.03) rotateY(5deg);
         }
         .message-container {
-            flex: 1;
-            padding: 0 30px;
+            width: 100%;
+            padding: 0 10px;
             max-width: 400px;
             position: relative;
         }
         .message {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             animation: floatUp 3s ease-in-out;
             border: 2px solid #ffb6c1;
+            font-size: 1rem;
         }
         .signature {
             font-style: italic;
             color: #ff4d4d;
             font-weight: bold;
-            font-size: 1.5rem;
-            margin-top: 20px;
+            font-size: 1.3rem;
+            margin-top: 15px;
             text-align: right;
         }
         .controls {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
-            margin: 20px 0;
+            margin: 15px 0;
             flex-wrap: wrap;
+            width: 100%;
+            max-width: 350px;
         }
         .control-btn {
             background: linear-gradient(to right, #ff4d4d, #ff9999);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            flex: 1 1 auto;
+            min-width: 120px;
+            justify-content: center;
         }
-        .control-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        .control-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         }
         .confetti-btn {
             background: linear-gradient(to right, #ff8a00, #ffca00);
@@ -134,9 +154,41 @@
         }
         .floating-item {
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             animation: float 8s linear infinite;
             opacity: 0.7;
+        }
+        .bible-verse {
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            font-style: italic;
+            border-left: 5px solid #ff4d4d;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .verse-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .verse-reference {
+            font-size: 1rem;
+            text-align: right;
+            color: #ff4d4d;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .love-message {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+            color: #ff4d4d;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: heartbeat 1.5s infinite;
+            transform-origin: center;
         }
         @keyframes glow {
             from {
@@ -190,17 +242,69 @@
                 opacity: 1;
             }
         }
-        @media (max-width: 900px) {
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Landscape orientation adjustments */
+        @media (min-width: 500px) and (orientation: landscape) {
             .main-content {
-                flex-direction: column;
-                gap: 30px;
+                flex-direction: row;
+                justify-content: space-around;
+                max-width: 900px;
+            }
+            .slideshow-container {
+                width: 200px;
+                height: 250px;
+            }
+            .message-container {
+                max-width: 300px;
+            }
+        }
+        /* Larger screens */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.3rem;
+            }
+            .quotes {
+                font-size: 1.5rem;
+            }
+            .main-content {
+                flex-direction: row;
+                justify-content: space-between;
+                max-width: 800px;
             }
             .slideshow-container {
                 width: 250px;
                 height: 350px;
             }
-            h1 {
-                font-size: 2.5rem;
+            .message {
+                padding: 25px;
+                font-size: 1.1rem;
+            }
+            .bible-verse {
+                max-width: 80%;
+            }
+            .love-message {
+                font-size: 3rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .bible-verse {
+                padding: 12px;
+                margin: 20px 0;
+            }
+            .verse-text {
+                font-size: 1.1rem;
+            }
+            .love-message {
+                font-size: 2rem;
             }
         }
     </style>
@@ -220,11 +324,12 @@
     </div>
     <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
     <!-- Main Content Area -->
     <div class="main-content">
-        <!-- Left Slideshow -->
+        <!-- Slideshow (single on mobile) -->
         <div class="slideshow-container" id="leftSlideshow">
             <div class="slides">
                 <img src="1.jpg" alt="Our Memory 1">
@@ -239,16 +344,16 @@
                 <img src="6.jpg" alt="Our Memory 4">
             </div>
             <div class="slides">
-                <img src="9.jpg" alt="Our Memory 1">
+                <img src="9.jpg" alt="Our Memory 5">
             </div>
             <div class="slides">
-                <img src="10.jpg" alt="Our Memory 2">
+                <img src="10.jpg" alt="Our Memory 6">
             </div>
             <div class="slides">
-                <img src="13.jpg" alt="Our Memory 3">
+                <img src="13.jpg" alt="Our Memory 7">
             </div>
             <div class="slides">
-                <img src="14.jpg" alt="Our Memory 4">
+                <img src="14.jpg" alt="Our Memory 8">
             </div>
             <div class="slides">
                 <img src="17.jpg" alt="Our Memory 1">
@@ -263,16 +368,16 @@
                 <img src="22.jpg" alt="Our Memory 4">
             </div>
             <div class="slides">
-                <img src="25.jpg" alt="Our Memory 1">
+                <img src="25.jpg" alt="Our Memory 5">
             </div>
             <div class="slides">
-                <img src="26.jpg" alt="Our Memory 2">
+                <img src="26.jpg" alt="Our Memory 6">
             </div>
             <div class="slides">
-                <img src="29.jpg" alt="Our Memory 3">
+                <img src="29.jpg" alt="Our Memory 7">
             </div>
             <div class="slides">
-                <img src="30.jpg" alt="Our Memory 4">
+                <img src="30.jpg" alt="Our Memory 8">
             </div>
         </div>
 
@@ -286,78 +391,93 @@
             </div>
         </div>
 
-        <!-- Right Slideshow -->
+        <!-- Second Slideshow (hidden on mobile, shows on larger screens) -->
         <div class="slideshow-container" id="rightSlideshow">
             <div class="slides">
-                <img src="3.jpg" alt="Our Memory 5">
+                <img src="3.jpg" alt="Our Memory 9">
             </div>
             <div class="slides">
-                <img src="4.jpg" alt="Our Memory 6">
+                <img src="4.jpg" alt="Our Memory 10">
             </div>
             <div class="slides">
-                <img src="7.jpg" alt="Our Memory 7">
+                <img src="7.jpg" alt="Our Memory 11">
             </div>
             <div class="slides">
-                <img src="8.jpg" alt="Our Memory 8">
+                <img src="8.jpg" alt="Our Memory 12">
             </div>
             <div class="slides">
-                <img src="11.jpg" alt="Our Memory 6">
+                <img src="11.jpg" alt="Our Memory 13">
             </div>
             <div class="slides">
-                <img src="12.jpg" alt="Our Memory 7">
+                <img src="12.jpg" alt="Our Memory 14">
             </div>
             <div class="slides">
-                <img src="15.jpg" alt="Our Memory 8">
+                <img src="15.jpg" alt="Our Memory 15">
             </div>
             <div class="slides">
-                <img src="16.jpg" alt="Our Memory 6">
+                <img src="16.jpg" alt="Our Memory 16">
             </div>
             <div class="slides">
-                <img src="19.jpg" alt="Our Memory 7">
+                <img src="19.jpg" alt="Our Memory 9">
             </div>
             <div class="slides">
-                <img src="20.jpg" alt="Our Memory 8">
+                <img src="20.jpg" alt="Our Memory 10">
             </div>
             <div class="slides">
-                <img src="23.jpg" alt="Our Memory 6">
+                <img src="23.jpg" alt="Our Memory 11">
             </div>
             <div class="slides">
-                <img src="24.jpg" alt="Our Memory 7">
+                <img src="24.jpg" alt="Our Memory 12">
             </div>
             <div class="slides">
-                <img src="27.jpg" alt="Our Memory 8">
+                <img src="27.jpg" alt="Our Memory 13">
             </div>
             <div class="slides">
-                <img src="28.jpg" alt="Our Memory 6">
+                <img src="28.jpg" alt="Our Memory 14">
             </div>
             <div class="slides">
-                <img src="31.jpg" alt="Our Memory 7">
+                <img src="31.jpg" alt="Our Memory 15">
             </div>
         </div>
     </div>
+
+    <!-- Bible Verse in Malayalam -->
+    <div class="bible-verse">
+        <div class="verse-text">"കര്‍ത്താവേ, ഞാന്‍ ഇവളെ സ്വീകരിക്കുന്നത് ജഡികമായ അഭിലാഷത്താലല്ല, നിഷ്‌കളങ്കമായ പ്രേമത്താലാണ്. അങ്ങയുടെ കാരുണ്യം എനിക്ക് ഉണ്ടാകണമേ! ഇവളോടൊത്തു വാര്‍ധക്യത്തിലെത്തുന്നതിന് അവിടുന്ന് അനുഗ്രഹിച്ചാലും!"</div>
+        <div class="verse-reference">- തോബീത്ത് 8:7</div>
+    </div>
+
+    <!-- Love Message -->
+    <div class="love-message">I LOVE YOU VAISHNAVY</div>
 
     <!-- Floating Hearts Background -->
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <script>
-        // Create floating hearts
+        // Mobile detection and adjustments
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Create floating hearts (fewer on mobile)
         const floatingHearts = document.getElementById("floatingHearts");
         const heartEmojis = ["❤️", "💖", "💗", "💘", "💓", "💞", "💕", "🧡", "💛", "💚", "💙", "💜"];
+        const heartCount = isMobile ? 20 : 30;
         
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < heartCount; i++) {
             const heart = document.createElement("div");
             heart.className = "floating-item";
             heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = Math.random() * 5 + 5 + "s";
             heart.style.animationDelay = Math.random() * 5 + "s";
-            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.fontSize = (Math.random() * 15 + 10) + "px";
             floatingHearts.appendChild(heart);
         }
 
         // Slideshow functionality
         function startSlideshow(containerId, delay) {
             const container = document.getElementById(containerId);
+            if (!container) return;
+            
             const slides = container.querySelectorAll(".slides");
             let currentSlide = 0;
             
@@ -368,12 +488,19 @@
                 setTimeout(showNextSlide, delay);
             }
             
-            showNextSlide();
+            // Initialize first slide
+            slides.forEach(slide => slide.style.display = "none");
+            if (slides.length > 0) slides[0].style.display = "block";
+            
+            // Start slideshow
+            setTimeout(showNextSlide, delay);
         }
 
         // Start slideshows with different timings
         startSlideshow("leftSlideshow", 3000);
-        startSlideshow("rightSlideshow", 3500);
+        if (!isMobile || window.innerWidth > 500) {
+            startSlideshow("rightSlideshow", 3500);
+        }
 
         // Quotes rotation
         const quotes = [
@@ -401,13 +528,32 @@
         const playBtn = document.getElementById("playBtn");
         const pauseBtn = document.getElementById("pauseBtn");
 
-        playBtn.addEventListener("click", () => {
-            bgMusic.play();
-            playBtn.style.display = "none";
-            pauseBtn.style.display = "flex";
-        });
+        // Mobile-friendly audio play (requires user interaction)
+        let audioEnabled = false;
+        
+        function enableAudio() {
+            if (!audioEnabled) {
+                bgMusic.volume = 0.7;
+                bgMusic.play().then(() => {
+                    audioEnabled = true;
+                    playBtn.style.display = "none";
+                    pauseBtn.style.display = "flex";
+                }).catch(e => {
+                    console.log("Audio playback failed:", e);
+                    alert("Please tap the Play Music button to start audio");
+                });
+            }
+        }
+
+        playBtn.addEventListener("click", enableAudio);
+        playBtn.addEventListener("touchend", enableAudio);
 
         pauseBtn.addEventListener("click", () => {
+            bgMusic.pause();
+            pauseBtn.style.display = "none";
+            playBtn.style.display = "flex";
+        });
+        pauseBtn.addEventListener("touchend", () => {
             bgMusic.pause();
             pauseBtn.style.display = "none";
             playBtn.style.display = "flex";
@@ -419,16 +565,23 @@
         // Confetti button functionality
         const confettiBtn = document.getElementById("confettiBtn");
         confettiBtn.addEventListener("click", createConfettiExplosion);
+        confettiBtn.addEventListener("touchend", createConfettiExplosion);
 
-        // Confetti effect on click anywhere
+        // Confetti effect on click/touch anywhere
         document.addEventListener("click", (e) => {
             if (e.target.tagName !== "BUTTON") {
                 createConfetti(e.clientX, e.clientY);
             }
         });
+        document.addEventListener("touchend", (e) => {
+            if (e.target.tagName !== "BUTTON") {
+                const touch = e.changedTouches[0];
+                createConfetti(touch.clientX, touch.clientY);
+            }
+        });
 
         function createConfettiExplosion() {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < (isMobile ? 3 : 5); i++) {
                 setTimeout(() => {
                     createConfetti(
                         Math.random() * window.innerWidth,
@@ -449,15 +602,16 @@
             confetti.style.zIndex = "1000";
             
             const emojis = ["❤️", "🎂", "✨", "🎉", "💖", "🥳", "🌸", "💝"];
+            const particleCount = isMobile ? 30 : 50;
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement("div");
                 particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 particle.style.position = "absolute";
-                particle.style.fontSize = Math.random() * 20 + 10 + "px";
+                particle.style.fontSize = (Math.random() * 15 + 8) + "px";
                 particle.style.left = x + "px";
                 particle.style.top = y + "px";
-                particle.style.transform = `translate(${Math.random() * 400 - 200}px, ${Math.random() * 400 - 200}px) rotate(${Math.random() * 360}deg)`;
+                particle.style.transform = `translate(${Math.random() * 300 - 150}px, ${Math.random() * 300 - 150}px) rotate(${Math.random() * 360}deg)`;
                 particle.style.animation = `fall ${Math.random() * 2 + 1}s ease-out forwards`;
                 confetti.appendChild(particle);
             }
@@ -477,6 +631,20 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Handle mobile viewport resize
+        function handleResize() {
+            const rightSlideshow = document.getElementById("rightSlideshow");
+            if (window.innerWidth <= 500) {
+                rightSlideshow.style.display = "none";
+            } else {
+                rightSlideshow.style.display = "block";
+            }
+        }
+
+        // Initial check and add resize listener
+        handleResize();
+        window.addEventListener("resize", handleResize);
     </script>
 </body>
 </html>
